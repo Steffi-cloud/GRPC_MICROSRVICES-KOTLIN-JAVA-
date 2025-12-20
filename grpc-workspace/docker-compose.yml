@@ -1,0 +1,17 @@
+services:
+  grpc-server:
+    build:
+      context: ./my-grpc-service-clean
+    image: my-grpc-service-clean
+    ports:
+      - "9090:9090"
+
+  grpc-client:
+    build:
+      context: ./my-grpc-client-clean
+    image: my-grpc-client-clean
+    depends_on:
+      - grpc-server
+    environment:
+      GRPC_HOST: grpc-server
+      GRPC_PORT: "9090"

@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package user.v1;
+
+option java_multiple_files = true;
+option java_package = "com.example.user.v1";
+
+service UserService {
+  rpc GetUserProfile (GetUserProfileRequest)
+      returns (GetUserProfileResponse);
+}
+
+message GetUserProfileRequest {
+  string user_id = 1;
+}
+
+message GetUserProfileResponse {
+  string user_id = 1;
+  string name = 2;
+  string email = 3;
+  int64  updated_at = 4;
+}
